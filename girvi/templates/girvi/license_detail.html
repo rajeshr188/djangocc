@@ -1,0 +1,69 @@
+{% extends "base_generic.html" %}
+{% block content%}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h1 class="h2">License Detail</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+
+      <button class="btn btn-sm btn-outline-secondary">Export</button>
+    </div>
+
+  </div>
+</div>
+<div class="card-deck">
+  <div class="card border-info mb-3">
+
+    <div class="card-body">
+      <h5 class="card-title">Loans</h5>
+      <p class="card-text"><ul class="list-group list-group-flush">
+                          <li class="list-group-item">Bills : {{license.loanbill_set.all.count}}</li>
+                          <li class="list-group-item">Amount :{{tla.t}}</li>
+                          <li class="list-group-item">Gold :{{tglw.t}}</li>
+                          <li class="list-group-item"> Avg/gm: {{avg}}
+                          </ul></p>
+    </div>
+
+  </div>
+  <div class="card border-success mb-3">
+
+    <div class="card-body">
+      <h5 class="card-title">Loans UnReleased</h5>
+      <p class="card-text"><ul class="list-group list-group-flush">
+                          <li class="list-group-item">Bills :{{urloan}}</li>
+                          <li class="list-group-item">Amount :{{urtla.t}}</li>
+                        <li class="list-group-item">Gold :{{urtglw.t}}</li></ul></p>
+    </div>
+
+  </div>
+  <div class="card border-danger mb-3">
+
+    <div class="card-body">
+      <h5 class="card-title">Loans Released</h5>
+      <p class="card-text">{{rtla.t}}</p>
+    </div>
+
+  </div>
+</div>
+<dl class="row">
+  <dt class="col-sm-3">Total Loans</dt>
+  <dd class="col-sm-9">{{license.loanbill_set.all.count}}</dd>
+
+  <dt class="col-sm-3">Total UnReleased</dt>
+  <dd class="col-sm-9">{{urloan}}</dd>
+
+  <dt class="col-sm-3">Total LoanAmount</dt>
+  <dd class="col-sm-9">{{tla.t}}</dd>
+
+  <dt class="col-sm-3">Total UnReleased LoanAmount</dt>
+  <dd class="col-sm-9">{{urtla.t}}</dd>
+
+  <dt class="col-sm-3">Total Released LoanAmount</dt>
+  <dd class="col-sm-9">{{rtla.t}}</dd>
+
+  <dt class="col-sm-3">Total UnReleased Gold Weight</dt>
+  <dd class="col-sm-9">{{urtglw.t}}</dd>
+
+
+</dl>
+
+{%endblock%}

@@ -1,0 +1,70 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h1 class="h2"><strong>{{customer.Name}}</strong>    {{customer.RelatedAs}}  {{customer.RelatedTo}}<br /></h1>
+  <address>
+
+    {{customer.Address}},{{customer.Area}}<br />
+    {{customer.ContactNo}}  {{customer.EmailId}}<br/>
+  </address>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+    <a class="btn btn-primary"  role="button"href="{% url 'girvi:loanbill-create' customer.id %}">Add Loan</a>
+      <button class="btn btn-sm btn-outline-secondary">Export</button>
+    </div>
+  </div>
+</div>
+
+<hr />
+<div class="card">
+  <div class="card-body">
+  Loans  <span class="badge badge-info">{{customer.loanbill_set.all.count}}</span>
+  Loan Amount <span class="badge badge-info">{{totalla.t}}</span>
+
+  Gold<span class="badge badge-info">{{totalgw.t}}</span>
+  silver<span class="badge badge-info">{{totalsw.t}}</span>
+  Bronze<span class="badge badge-info">{{totalbw.t}}</span>
+  </div>
+</div>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">LoanId</th>
+      <th scope="col">Loan Date</th>
+      <th scope="col">Item</th>
+      <th scope="col">Loan Amount</th>
+      <th scope="col">Loan No of Months</th>
+      <th scope="col">Interest Due</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for loanbill in customer.loanbill_set.all   %}
+      {% if loanbill.noofmonths > 12 %}
+        <tr class="table-danger">      <th scope="row"><a href="{% url 'girvi:loanbill-detail' loanbill.id %}">{{loanbill.LoanId}}</a></th>
+              <td>{{loanbill.LoanDate.date}} </td>
+              <td>{{loanbill.ItemDesc}}</td>
+              <td>{{loanbill.LoanAmount}}</td>
+              <td>{{loanbill.noofmonths}} </td>
+              <td>{{loanbill.interestdue}}</td>
+              <td><a href="{% url 'girvi:loanbill-update' loanbill.id %}">Update</a> / <a href="{%url 'girvi:loanbill-delete' loanbill.id%}">Delete</a></td>
+
+            </tr>
+      {% else %}
+        <tr>
+          <th scope="row"><a href="{% url 'girvi:loanbill-detail' loanbill.id %}">{{loanbill.LoanId}}</a></th>
+          <td>{{loanbill.LoanDate.date}} </td>
+          <td>{{loanbill.ItemDesc}}</td>
+          <td>{{loanbill.LoanAmount}}</td>
+          <td>{{loanbill.noofmonths}} </td>
+          <td>{{loanbill.interestdue}}</td>
+          <td><a href="{% url 'girvi:loanbill-update' loanbill.id %}">Update</a> / <a href="{%url 'girvi:loanbill-delete' loanbill.id%}">Delete</a></td>
+
+        </tr>
+      {%endif %}
+
+    {%endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

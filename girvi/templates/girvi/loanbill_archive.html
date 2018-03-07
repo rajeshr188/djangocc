@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action active">
+    Loan By year
+  </a>
+  {%  for year in date_list %}
+  <a href="{% url 'girvi:loanbill-archive-year' year.year %}" class="list-group-item list-group-item-action">{{year.year}}</a>
+
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base_generic.html" %}
+  {% block content %}
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+    <h1 class="h2">Licenses</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group mr-2">
+       <a class="btn btn-primary" href="{% url 'girvi:license-create' %}" role="button">New License</a>
+        <button class="btn btn-sm btn-outline-secondary">Export</button>
+      </div>
+
+    </div>
+  </div>
+  <div class="table-responsive">
+  <table class="table table-bordered table-striped ">
+  <thead class="thead-dark">
+    <tr>
+      <td>Shop</td>
+      <td>Address</td><td>License Type</td><td>License</td><td>Propreitor</td><td>Created On</td><td>Total Bills</td><td>Edit</td>
+    </tr>
+  </thead>
+    <tbody>
+      {% for l in license_list %}
+      <tr>
+
+        <td>{{l.ShopName}}</td>
+        <td>{{l.Address}}</td>
+        <td>{{l.Type}}</td>
+        <td><a href="{% url 'girvi:license-detail' l.id%}">{{l.Lid}}</a></td>
+        <td>{{l.Propreitor}}</rd>
+        <td>{{l.CreatedOn}}</td>
+        <td>{{l.loanbill_set.all.count}}</td>
+
+        <td>
+          <a href="{% url 'girvi:license-update' l.id%}">Update</a>
+           / <a href="{% url 'girvi:license-delete' l.id%}">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+
+
+
+
+
+  {% endblock %}

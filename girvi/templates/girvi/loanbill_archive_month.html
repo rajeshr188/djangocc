@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action active">
+    Loan By month
+  </a>
+    {% for article in object_list %}
+    <a href="#" class="list-group-item list-group-item-action">{{ article.LoanDate|date:"F j, Y" }}: {{ article.LoanId }}</a>
+    {% endfor %}
+</ul>
+</div>
+<p>
+    {% if previous_month %}
+        Previous Month: {{ previous_month|date:"F Y" }}
+    {% endif %}
+    {% if next_month %}
+        Next Month: {{ next_month|date:"F Y" }}
+    {% endif %}
+</p>
+{% endblock %}

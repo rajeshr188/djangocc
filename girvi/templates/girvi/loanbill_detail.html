@@ -1,0 +1,91 @@
+{% extends "base_generic.html" %}
+{% block content%}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h1 class="h2">Loanbill Detail</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+      <a class="btn btn-secondary" href="{% url 'girvi:release-create' loanbill.id %}">Release</a>
+        <a class="btn btn-primary" href="{% url 'girvi:loanbill-update' loanbill.id %}">Update</a>
+          <a class="btn btn-primary" href="{% url 'girvi:loanbill-delete' loanbill.id %}">Delete</a>
+    <a class="btn btn-secondary" href="{% url 'girvi:loanbill-detail-pdf' loanbill.id %}">Print</a>
+      <button class="btn btn-sm btn-outline-secondary">Export</button>
+    </div>
+
+  </div>
+</div>
+<div class="table-responsive">
+<table class="table table-sm table-striped">
+  <tbody>
+    <tr>
+      <th scope="row">Loan Id</th>
+      <td>{{loanbill.LoanId}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Customer</th>
+      <td><a href="{%url 'girvi:customer-detail' loanbill.customer.id%}">{{loanbill.customer.Name}} {{loanbill.customer.RelatedAs}} {{loanbill.customer.RelatedTo}}</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Loan Date</th>
+      <td>{{loanbill.LoanDate}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Item type</th>
+      <td>{{loanbill.ItemType}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Item Desc</th>
+      <td>{{loanbill.ItemDesc}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Item Weight</th>
+      <td>{{loanbill.ItemWeight}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Principal Amount </th>
+      <td>{{loanbill.LoanAmount}}</td>
+    </tr>
+    <tr>
+      <th scope="row">No of months</th>
+      <td>{{loanbill.noofmonths}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Interest Rate</th>
+      <td>{{loanbill.LoanInt}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Due InteresT</th>
+      <td>{{loanbill.interestdue}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Due Total</th>
+      <td>{{loanbill.total}}</td>
+    </tr>
+
+  </tbody>
+</table>
+{% if loanbill.bill %}
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">Release Id</th>
+      <th scope="col">Release Date</th>
+      <th scope="col">Interest Paid</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <th scope="row">2</th>
+      <td>{{loanbill.bill.ReleaseDate}}</td>
+      <td>{{loanbill.bill.InterestPaid}}</td>
+
+    </tr>
+
+  </tbody>
+</table>
+{% else %}
+
+{%endif%}
+
+{% endblock %}

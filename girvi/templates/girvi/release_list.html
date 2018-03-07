@@ -1,0 +1,43 @@
+{% extends "base_generic.html" %}
+  {% block content %}
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+    <h1 class="h2">Releases</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group mr-2">
+
+       <a class='btn btn-primary' href="{% url 'girvi:release-create' %}">New Release</a>
+        <button class="btn btn-sm btn-outline-secondary">Share</button>
+        <button class="btn btn-sm btn-outline-secondary">Export</button>
+      </div>
+
+    </div>
+  </div>
+<div class="table-responsive">
+<table class="table table-bordered table-striped ">
+  <thead class="thead-dark">
+    <tr>
+      <td>License </td><td>Release Id</td><td>Loan Id</td><td>Release Date</td><td>LoanDate</td>
+      <td>Customer</td><td>Amount</td><td>Type</td><td>noofmonths</td><td>Interest Paid</td><td>Total</td>
+    </tr>
+  </thead>
+    <tbody>
+      {% for r in release_list %}
+      <tr>
+        <td>{{r.loanbill.license.Lid}}</td>
+        <td><a href="{% url 'girvi:release-detail' r.loanbill.id %}">{{ r.ReleaseId }}</a></td>
+        <td><a href="{% url 'girvi:loanbill-detail' r.loanbill.id}">{{r.loanbill.LoanId}}</a></td>
+        <td>{{r.ReleaseDate.date}}</td>
+        <td>{{r.loanbill.LoanDate}}</td>
+        <td>{{r.loanbill.customer.Name}}</td>
+        <td>{{r.loanbill.LoanAmount}}</td>
+        <td>{{r.loanbill.ItemType}}</td><td>{{r.loanbill.noofmonths}}</td>
+        <td>{{r.InterestPaid}}</td>
+        <td>{{r.loanbill.total}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base_generic.html"%}{%block content%}
+<h1>Ledger </h1>
+{% if loanbill_list %}
+<div class="table-responsive">
+<table class="table table-striped table-striped">
+  <thead>
+    <tr>
+      <td>LoanId</td><td>Customer</td><td>LoanDate</td><td>Amount</td><td>Due Interest</td><td>Item Weight</td><td>Item</td><td>Released</td><td>Interest Paid</td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for loanbill in loanbill_list %}
+    <tr>
+      <td>{{loanbill.LoanId}}</td>
+      <td>{{loanbill.customer.Name}} {{loanbill.customer.RelatedAs}} {{loanbill.customer.RelatedTo}} {{loanbill.customer.Address}}</td>
+      <td>{{loanbill.LoanDate}}</td>
+      <td>{{loanbill.LoanAmount}}</td>
+      <td>{{loanbill.interestdue}}</td>
+      <td>{{loanbill.ItemWeight}}</td>
+      <td>{{loanbill.ItemDesc}}</td>
+
+      <td>{%if loanbill.bill %} {{loanbill.bill.ReleaseDate}} {% else %}Not Released{% endif%}</td>
+      <td>{%if loanbill.bill %}{{loanbill.bill.InterestPaid}} {%endif%}</td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{%endif%}
+{%endblock%}

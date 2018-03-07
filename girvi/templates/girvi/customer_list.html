@@ -1,0 +1,76 @@
+{% extends "base_generic.html" %}
+{% load widget_tweaks %}
+{% block content %}
+   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+     <h1 class="h2">Customers</h1>
+     <div class="btn-toolbar mb-2 mb-md-0">
+       <div class="btn-group mr-2">
+        <a class="btn btn-primary" href="{% url 'girvi:customer-create' %}" role="button">New Customer</a>
+         <button class="btn btn-sm btn-outline-secondary">Export</button>
+       </div>
+     </div>
+   </div>
+     <div class="well">
+     <form method="get">
+
+    <h4 style="margin-top: 0">Filter Customers</h4>
+    <div class="row">
+      <div class="form-group col-sm-4 col-md-3">
+        {{ filter.form.Name.label_tag }}
+        {% render_field filter.form.Name class="form-control" %}
+      </div>
+      <div class="form-group col-sm-4 col-md-3">
+        {{ filter.form.RelatedTo.label_tag }}
+        {% render_field filter.form.RelatedTo class="form-control" %}
+      </div>
+      <div class="form-group col-sm-4 col-md-3">
+        {{ filter.form.ContactNo.label_tag }}
+        {% render_field filter.form.ContactNo class="form-control" %}
+      </div>
+      <div class="form-group col-sm-4 col-md-3">
+        {{ filter.form.Area.label_tag }}
+        {% render_field filter.form.Area class="form-control" %}
+      </div>
+
+    </div>
+    <button type="submit" class="btn btn-primary">
+      <span class="glyphicon glyphicon-search"></span> Search
+    </button>
+
+</form></div>
+   <div class="table-responsive">
+     <table class="table table-bordered  table-striped">
+       <thead class="thead-dark">
+         <tr>
+           <td>Customer Id</td>
+           <td>Loans </td>
+           <td>Customer Name</td>
+           <td>Related As</td>
+           <td>Related To</td>
+           <td>Address</td>
+           <td>Area</td>
+           <td>Contact No</td>
+           <td>Edit</td>
+         </tr>
+       </thead>
+       <tbody >
+       {% for c in customer_list %}
+        <tr>
+          <td>{{c.id}}</td>
+          <td>{{c.loanbill_set.all.count}}</td>
+          <td ><a href="{%  url 'girvi:customer-detail'  c.id %}">{{ c.Name }}</td>
+          <td>{{c.RelatedAs}}</td>
+          <td>{{c.RelatedTo}}</td>
+          <td>{{c.Address}}</td>
+          <td>{{c.Area}}</td>
+          <td>{{c.ContactNo}}</td>
+          <td><a href="{% url 'girvi:customer-update' c.id%}">Update</a>
+        / <a href="{% url 'girvi:customer-delete' c.id%}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+{% endblock %}

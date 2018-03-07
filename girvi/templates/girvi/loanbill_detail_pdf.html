@@ -1,0 +1,127 @@
+{% extends "easy_pdf/base.html" %}
+
+{% block extra_style %}
+<style type="text/css">
+        body {
+            font-weight: 200;
+            font-size: 14px;
+        }
+        .header {
+            font-size: 20px;
+            font-weight: 100;
+            text-align: center;
+            color: #007cae;
+        }
+        .title {
+            font-size: 22px;
+            font-weight: 100;
+           /* text-align: right;*/
+           padding: 10px 20px 0px 20px;
+        }
+        .title span {
+            color: #007cae;
+        }
+        .details {
+            padding: 10px 20px 0px 20px;
+            text-align: left !important;
+            /*margin-left: 40%;*/
+        }
+        .hrItem {
+            border: none;
+            height: 1px;
+            /* Set the hr color */
+            color: #333; /* old IE */
+            background-color: #fff; /* Modern Browsers */
+        }
+    </style>
+{% endblock %}
+{% block content%}
+<div class='wrapper'>
+          <div class='header'>
+              <p class='title'><h1>{{loanbill.license.ShopName}}<br />{{loanbill.license.Address}}<br />{{loanbill.license.Lid}}</h2></p>
+          </div>
+      <div>
+      <div class='details'>
+          <p>Customer: {{loanbill.customer.Name}} {{loanbill.customer.RelatedAs}} {{loanbill.customer.RelatedTo}}
+                        {{loanbill.customer.Address}}</p>
+
+          <hr class='hrItem' />
+      </div>
+  </div>
+<div class="table-responsive">
+<table class="table table-sm table-striped">
+  <thead>
+    <tr>
+      <th scope="col"><h1>Loan Detail</h1></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Loan Id</th>
+      <td>{{loanbill.LoanId}}</td>
+    </tr>
+
+      <th scope="row">Loan Date</th>
+      <td>{{loanbill.LoanDate}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Item type</th>
+      <td>{{loanbill.ItemType}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Item Desc</th>
+      <td>{{loanbill.ItemDesc}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Item Weight</th>
+      <td>{{loanbill.ItemWeight}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Principal Amount </th>
+      <td>{{loanbill.LoanAmount}}</td>
+    </tr>
+    <tr>
+      <th scope="row">No of months</th>
+      <td>{{loanbill.noofmonths}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Interest Rate</th>
+      <td>{{loanbill.LoanInt}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Due InteresT</th>
+      <td>{{loanbill.interestdue}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Due Total</th>
+      <td>{{loanbill.total}}</td>
+    </tr>
+
+  </tbody>
+</table>
+{% if loanbill.bill %}
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">Release Id</th>
+      <th scope="col">Release Date</th>
+      <th scope="col">Interest Paid</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <th scope="row">2</th>
+      <td>{{loanbill.bill.ReleaseDate}}</td>
+      <td>{{loanbill.bill.InterestPaid}}</td>
+
+    </tr>
+
+  </tbody>
+</table>
+{% else %}
+ Status : UnReleased
+{%endif%}
+
+{% endblock %}

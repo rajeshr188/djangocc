@@ -1,0 +1,43 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h1 class="h2">Loanbills</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+
+     <a class="btn btn-primary" href="{% url 'girvi:loanbill-create' %}" role="button">New Loanbill</a>
+      <button class="btn btn-sm btn-outline-secondary">Share</button>
+      <button class="btn btn-sm btn-outline-secondary">Export</button>
+    </div>
+
+  </div>
+</div>
+<div class="table-responsive">
+<table class="table table-bordered table-striped ">
+  <thead class="thead-dark">
+    <tr>
+      <td> License </td><td>Loan Id</td><td>Loan Date</td><td>Customer</td><td>Amount</td><td>Type</td><td>Item Desc</td><td>Due Interest</td>
+    </tr>
+  </thead>
+    <tbody>
+      {% for l in loanbill_list %}
+      <tr>
+        <td>{{l.license.Lid}}</td>
+        <td><a href="{% url 'girvi:loanbill-detail' l.id %}">{{ l.LoanId }}</a></td>
+        <td>{{l.LoanDate}}</td>
+
+        <td><a href="{%url 'girvi:customer-detail' l.customer.id%}">{{l.customer.Name}}</a></td>
+        <td>{{l.LoanAmount}}</td>
+        <td>{{l.ItemType}}</td>
+        <td>{{l.ItemDesc}}</td>
+        <td>{{l.interestdue}}</td>
+
+        {% endfor %}
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+  {% endblock %}

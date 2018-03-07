@@ -1,0 +1,27 @@
+{% extends "base_generic.html"%}
+{%block content%}
+<table class="table table-bordered table-sm">
+  <thead>
+    <tr>{{day}}</tr>
+
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{releaseamountsum.ras}} </td><td>Girvi Jama Khata</td>
+      <td>{{loansum.LoanAmount__sum}}</td><td>Girvi Nave Khata</td>
+
+    </tr>
+    <tr>
+      <td scope="row">{{releaseinterestsum.InterestPaid__sum}}</td>
+      <td scope="row">Byaaj Khata Jama</td>
+      
+    </tr>
+    <tr>
+      <td scope="row"></td>
+<td scope="row"></td
+
+    </tr>
+
+  </tbody>
+</table>
+{%endblock%}

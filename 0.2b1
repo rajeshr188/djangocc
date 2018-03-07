@@ -1,0 +1,29 @@
+Collecting xhtml2pdf
+  Downloading xhtml2pdf-0.2.1.tar.gz (97kB)
+Collecting html5lib==1.0b10 (from xhtml2pdf)
+  Downloading html5lib-1.0b10-py2.py3-none-any.whl (112kB)
+Collecting httplib2 (from xhtml2pdf)
+  Downloading httplib2-0.10.3.tar.gz (204kB)
+Collecting pyPdf2 (from xhtml2pdf)
+  Downloading PyPDF2-1.26.0.tar.gz (77kB)
+Requirement already satisfied: Pillow in c:\users\rajesh~1\desktop\worksp~1\venvs\djangocc\lib\site-packages (from xhtml2pdf)
+Requirement already satisfied: reportlab>=3.0 in c:\users\rajesh~1\desktop\worksp~1\venvs\djangocc\lib\site-packages (from xhtml2pdf)
+Collecting six (from xhtml2pdf)
+  Using cached six-1.11.0-py2.py3-none-any.whl
+Collecting webencodings (from html5lib==1.0b10->xhtml2pdf)
+  Downloading webencodings-0.5.1-py2.py3-none-any.whl
+Requirement already satisfied: setuptools>=18.5 in c:\users\rajesh~1\desktop\worksp~1\venvs\djangocc\lib\site-packages (from html5lib==1.0b10->xhtml2pdf)
+Requirement already satisfied: pip>=1.4.1 in c:\users\rajesh~1\desktop\worksp~1\venvs\djangocc\lib\site-packages (from reportlab>=3.0->xhtml2pdf)
+Building wheels for collected packages: xhtml2pdf, httplib2, pyPdf2
+  Running setup.py bdist_wheel for xhtml2pdf: started
+  Running setup.py bdist_wheel for xhtml2pdf: finished with status 'done'
+  Stored in directory: C:\Users\rajesh rathod\AppData\Local\pip\Cache\wheels\6c\1e\b2\9040a67eba4da1b389caad5f31c78aabe393c084782bf50d2b
+  Running setup.py bdist_wheel for httplib2: started
+  Running setup.py bdist_wheel for httplib2: finished with status 'done'
+  Stored in directory: C:\Users\rajesh rathod\AppData\Local\pip\Cache\wheels\ca\ac\5f\749651f7925b231103f5316cacca82a487810c22d30f011c0c
+  Running setup.py bdist_wheel for pyPdf2: started
+  Running setup.py bdist_wheel for pyPdf2: finished with status 'done'
+  Stored in directory: C:\Users\rajesh rathod\AppData\Local\pip\Cache\wheels\86\6a\6a\1ce004a5996894d33d93e1fb1b67c30973dc945cc5875a1dd0
+Successfully built xhtml2pdf httplib2 pyPdf2
+Installing collected packages: six, webencodings, html5lib, httplib2, pyPdf2, xhtml2pdf
+Successfully installed html5lib-1.0b10 httplib2-0.10.3 pyPdf2-1.26.0 six-1.11.0 webencodings-0.5.1 xhtml2pdf-0.2.1

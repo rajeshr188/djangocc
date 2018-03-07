@@ -1,0 +1,61 @@
+{% extends "base_generic.html" %}
+{% block content%}
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col"><h1>Release Detail</h1></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Release Id </th>
+      <td>{{release.id}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Loan Id</th>
+      <td>{{release.LoanBill.LoanId}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Release Date</th>
+      <td>{{release.ReleaseDate}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Customer</th>
+      <td>{{release.LoanBill.Customer.CustName}}</td>
+    </tr>
+    <tr>
+      <th scope="row">NoofMonths</th>
+      <td>{{release.LoanBill.noofmonths}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Item Type</th>
+      <td>{{release.LoanBill.LoanItemType}}</td>
+    </tr>
+    <tr>
+      <th scope="row">LoanAmount</th>
+      <td>{{release.LoanBill.LoanAmount}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Interest Due</th>
+      <td>{{release.LoanBill.interestdue}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Interest Paid</th>
+      <td>{{release.InterestPaid}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Total Paid</th>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<hr/>
+:
+<hr/>
+
+
+
+{% endblock %}
